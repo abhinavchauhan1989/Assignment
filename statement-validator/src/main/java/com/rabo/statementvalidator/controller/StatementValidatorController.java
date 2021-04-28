@@ -1,7 +1,5 @@
 package com.rabo.statementvalidator.controller;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +31,6 @@ public class StatementValidatorController {
     @PostMapping("/payments")
     public ResponseEntity<?> validateStatements(@RequestBody @Valid List<PaymentStatement> statements){
         return ResponseEntity.ok(statementValidatorService.validateStatements(statements));
-    }
-
-    @GetMapping("/")
-    public List<PaymentStatement> getPayment(){
-        List<PaymentStatement> statements = new ArrayList<>();
-        statements.add(new PaymentStatement (12312312312L,"INGBNL12312",new BigDecimal(122311),new BigDecimal(122311),"any",
-        								new BigDecimal(0)));
-        
-        return statements;
     }
 
 }
